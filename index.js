@@ -20,11 +20,13 @@ addBtn.addEventListener(`click`, function (e) {
             return !checkbox.checked;
         });
         let summary = document.querySelector(`#summary`);
+
         if (!summary) {
             summary = document.createElement(`h3`);
-            summary.id = `summary`;
             document.querySelector(`body`).appendChild(summary);
         }
+
+
         summary.textContent = `You have ${incompleteTodos.length} todos left.`;
     };
 
@@ -32,12 +34,22 @@ addBtn.addEventListener(`click`, function (e) {
     updateSummary();
 });
 
+
 deleteBtn.addEventListener(`click`, function (e) {
     const isChecked = document.querySelectorAll(`input[type="checkbox"]:checked`);
     isChecked.forEach(function (check) {
         check.parentElement.remove();
+
+        const isCompleted = document.querySelectorAll(`input[type="checkbox"]`).length === 0;
+        if (isCompleted) {
+            summary.textContent = `Congratulations! You have completed all your todos!`;
+
+        }
+
     });
-    
+
+
+
 });
 
 
