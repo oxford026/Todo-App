@@ -13,7 +13,7 @@ addBtn.addEventListener(`click`, function (e) {
 
     const text = document.querySelector(`#input`);
     console.log(text.value);
-    
+
     const paragraphs = document.createElement(`p`);
     paragraphs.textContent = text.value;
     paragraphsCard.appendChild(paragraphs);
@@ -28,7 +28,7 @@ addBtn.addEventListener(`click`, function (e) {
         const incompleteTodos = checkboxes.filter(function (checkbox) {
             return !checkbox.checked;
         });
-        
+
 
         if (!summary) {
             summary = document.createElement(`h3`);
@@ -48,7 +48,7 @@ deleteBtn.addEventListener(`click`, function (e) {
         check.parentElement.remove();
 
         const isCompleted = document.querySelectorAll(`p input[type="checkbox"]`).length === 0;
-        if (isCompleted) {          
+        if (isCompleted) {
             summary.textContent = `Congratulations! You have completed all your todos!`;
 
         }
@@ -56,17 +56,22 @@ deleteBtn.addEventListener(`click`, function (e) {
 });
 
 hidecompleted.addEventListener(`click`, function (e) {
+    setInterval(() => {
+        const completedCheckboxes = Array.from(document.querySelectorAll(`p input[type="checkbox"]`));
+        completedCheckboxes.forEach(function (checkbox) {
 
-    const completedCheckboxes = Array.from(document.querySelectorAll(`p input[type="checkbox"]`));
-    completedCheckboxes.forEach(function (checkbox) {
 
-     
-        if (e.target.checked && checkbox.checked) {
-            checkbox.parentElement.style.display = `none`;
-        }else {
-            checkbox.parentElement.style.display = `block`;
-        }
-    });
+            if (e.target.checked && checkbox.checked) {
+                checkbox.parentElement.style.display = `none`;
+            } else {
+                checkbox.parentElement.style.display = `block`;
+            }
+
+
+
+
+        });
+    })
 });
 
 
