@@ -68,8 +68,6 @@ hidecompleted.addEventListener(`click`, function (e) {
             }
 
 
-
-
         });
     })
 });
